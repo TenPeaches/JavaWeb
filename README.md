@@ -1,2 +1,2 @@
 # JavaWeb
-JavaWeb的案例练习代码
+JavaWeb案例的代码
