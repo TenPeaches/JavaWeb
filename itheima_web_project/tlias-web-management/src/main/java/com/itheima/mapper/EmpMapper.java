@@ -52,4 +52,7 @@ public interface EmpMapper {
 
 
     void update(Emp emp);
+
+    @Select("select * from tlias.emp where username = #{username} and password = #{password}")
+    Emp getByNameAndPassword(Emp emp);
 }
