@@ -1,10 +1,14 @@
 package com.itheima.service.impl;
 
 import com.itheima.mapper.DeptMapper;
+import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Dept;
+import com.itheima.pojo.DeptLog;
+import com.itheima.service.DeptLogService;
 import com.itheima.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,16 +17,31 @@ import java.util.List;
 public class DeptServiceImpl implements DeptService {
 
     @Autowired
+    private DeptLogService deptLogService;
+    @Autowired
     private DeptMapper deptMapper;
+
+    @Autowired
+    private EmpMapper empMapper;
 
     @Override
     public List<Dept> list() {
         return deptMapper.list();
     }
 
+    @Transactional// 事务注解
     @Override
     public void delete(Integer id) {
-        deptMapper.deleteById(id);
+        try {
+            deptMapper.deleteById(id);
+            empMapper.deleteById(id);// 级联删除员工
+
+        } finally {
+            DeptLog deptLog = new DeptLog();
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLog.setDescription("执行了解散部门操作，此次解散的是"+id+"部门");
+            deptLogService.insert(deptLog);
+        }
     }
 
     @Override
