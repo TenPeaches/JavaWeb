@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.itheima.AutoConfigurationTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 2.839 s <<< FAILURE! - in com.itheima.AutoConfigurationTests
+testHeaderParser  Time elapsed: 0.36 s  <<< ERROR!
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'HeaderParser.class' available
+	at com.itheima.AutoConfigurationTests.testHeaderParser(AutoConfigurationTests.java:24)
+
+testHeaderGenerator  Time elapsed: 0.002 s  <<< ERROR!
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'HeaderGenerator.class' available
+	at com.itheima.AutoConfigurationTests.testHeaderGenerator(AutoConfigurationTests.java:29)
+
+testTokenParser  Time elapsed: 0.002 s  <<< ERROR!
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'TokenParser' available
+	at com.itheima.AutoConfigurationTests.testTokenParser(AutoConfigurationTests.java:19)
+
