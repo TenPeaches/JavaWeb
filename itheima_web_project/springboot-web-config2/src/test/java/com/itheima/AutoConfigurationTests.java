@@ -16,7 +16,7 @@ public class AutoConfigurationTests {
 
     @Test
     public void testTokenParser(){
-        System.out.println(applicationContext.getBean("TokenParser"));
+        System.out.println(applicationContext.getBean("TokenParser.class"));
     }
 
     @Test
@@ -28,5 +28,6 @@ public class AutoConfigurationTests {
     public void testHeaderGenerator(){
         System.out.println(applicationContext.getBean("HeaderGenerator.class"));
     }
+
 
 }
